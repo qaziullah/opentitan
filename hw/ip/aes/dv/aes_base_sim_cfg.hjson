@@ -72,6 +72,11 @@
         build_opts: ["+define+EN_MASKING=1",
                      "+define+SBOX_IMPL=aes_pkg::SBoxImplDom" ]
     }
+    {
+      name: aes_masked_toffoli
+        build_opts: ["+define+EN_MASKING=1",
+                     "+define+SBOX_IMPL=aes_pkg::SBoxImplDom" ]
+    }
   ]
 
   // Default UVM test and seq class name.

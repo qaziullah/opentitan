@@ -75,8 +75,11 @@ typedef enum integer {
                                  // see aes_sbox_canright_masked.sv
   SBoxImplCanrightMaskedNoreuse, // First-order masked Canright S-Box without mask reuse,
                                  // see aes_sbox_canright_masked_noreuse.sv
-  SBoxImplDom                    // First-order masked S-Box using domain-oriented masking,
+  SBoxImplDom,                   // First-order masked S-Box using domain-oriented masking,
                                  // see aes_sbox_canright_dom.sv
+  SBoXImplTof                    // First-order masked S-Box using domain-oriented masking,
+                                 // see aes_sbox_canright_dom.sv
+                                 
 } sbox_impl_e;
 
 
