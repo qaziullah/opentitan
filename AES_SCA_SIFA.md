@@ -44,10 +44,10 @@ The Security hardening of the core aganist SIFA will be verified by the followin
 
 ### A. AES Sbox Description relying on Invertible computations. 
 
-![AES Sbox Description] (doc/SCA_SIFA_docs/AES_S-box_toffoli_gate.png)
+![AES Sbox Description](doc/SCA_SIFA_docs/AES_S-box_toffoli_gate.png)
 
 ### B. Masked AES S-box Circuit
-![AES Sbox Circuit] (doc/SCA_SIFA_docs/circuit_AES_S-box_toffoli_gate1.png)
+![AES Sbox Circuit](doc/SCA_SIFA_docs/circuit_AES_S-box_toffoli_gate1.png)
 
 ## Reference
 All the images and ciruits description is taken from the the paper J. Daemen, et al., "Protecting against Statistical Ineffective Fault Attacks" [link to the paper](https://eprint.iacr.org/2019/536.pdf).
