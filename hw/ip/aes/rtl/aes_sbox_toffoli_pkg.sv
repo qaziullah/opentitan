@@ -14,7 +14,7 @@ package aes_sbox_toffoli_pkg;
   // inv_gf2p2 (a)
   function automatic logic [1:0] aes_inv_gf2p2(logic [1:0] a);
     logic [1:0] a_out;
-    aout  = {a[0],a[1]};
+    a_out  = {a[0],a[1]};
     return a_out;
   endfunction
 
@@ -25,7 +25,7 @@ package aes_sbox_toffoli_pkg;
     logic [1:0] T0;
     logic [1:0] a_out;
     T0    = b ^ c;
-    a_out = a ^ {T0[1], (T[0] ^ T0[1])};
+    a_out = a ^ {T0[1], (T0[0] ^ T0[1])};
     return a_out;
   endfunction
 
@@ -36,7 +36,7 @@ package aes_sbox_toffoli_pkg;
     logic [3:0] T0;
     logic [3:0] a_out;
     T0    = b ^ c;
-    a_out = a ^ {(T0[0] ^ T0[2]), (T0[3] ^ T0[1]), (T0[0] ^ T0[1]), T[0]};
+    a_out = a ^ {(T0[0] ^ T0[2]), (T0[3] ^ T0[1]), (T0[0] ^ T0[1]), T0[0]};
     return a_out;
   endfunction
 
@@ -65,7 +65,7 @@ package aes_sbox_toffoli_pkg;
 
 
   // toffoli gate in GF(2^2)
-  function automatic logic [1:0] aes_toffoli_gate_gf2p2(logic [1:0] a, logic [1:0] b, logic [1:0] c);
+  function automatic logic [1:0] aes_toffoli_gate_gf2p2(logic [1:0] ain, logic [1:0] b, logic [1:0] c);
     // pt_gf2p2 (a,b,c), a simple toffoli gate in gf2p2 and is defined as 
     // pt_gf2p2(a,b,c)  =>  aout <-- ain + (b . c); 
     // where + and . are simple addition and multiplication in gf2p2 respectively 
@@ -88,6 +88,21 @@ package aes_sbox_toffoli_pkg;
     return aout;
   endfunction
 
+
+  // Matrix-vector multiplication in GF(2^8): c = A * b
+  function automatic logic [7:0] aes_mvm(
+    logic [7:0] vec_b,
+    logic [7:0] mat_a [8]
+  );
+    logic [7:0] vec_c;
+    vec_c = '0;
+    for (int i = 0; i < 8; i++) begin
+      for (int j = 0; j < 8; j++) begin
+        vec_c[i] = vec_c[i] ^ (mat_a[j][i] & vec_b[7-j]);
+      end
+    end
+    return vec_c;
+  endfunction
 
 
 
